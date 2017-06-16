@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.company.cutepuppypics" version="0.0.1">
+    <name>JSL</name>
+    <description>
+        JSL
+    </description>
+    <author email="douglasantunesbarreto@gmail.com" href="http://cordova.io">
+        Douglas Antunes
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="WebViewBounce" value="true" />
+    <platform name="android">
+        <icon density="ldpi" src="www/img/icone.png" />
+        <splash density="land-ldpi" src="www/img/drawable-land-ldpi-screen.png" />
+        <splash density="land-mdpi" src="www/img/drawable-land-mdpi-screen.png" />
+        <splash density="land-hdpi" src="www/img/drawable-land-hdpi-screen.png" />
+        <splash density="land-xhdpi" src="www/img/drawable-land-xhdpi-screen.png" />
+        <splash density="land-xxhdpi" src="www/img/drawable-land-xxhdpi-screen.png" />
+        <splash density="land-xxxhdpi" src="www/img/drawable-land-xxxhdpi-screen.png" />
+        <splash density="port-ldpi" src="www/img/drawable-port-ldpi-screen.png" />
+        <splash density="port-mdpi" src="www/img/drawable-port-mdpi-screen.png" />
+        <splash density="port-hdpi" src="www/img/drawable-port-hdpi-screen.png" />
+        <splash density="port-xhdpi" src="www/img/drawable-port-xhdpi-screen.png" />
+        <splash density="port-xxhdpi" src="www/img/drawable-port-xxhdpi-screen.png" />
+        <splash density="port-xxxhdpi" src="www/img/drawable-port-xxxhdpi-screen.png" />
+    </platform>
+    <plugin name="cordova-plugin-device" spec="~1.1.4" />
+    <plugin name="cordova-plugin-console" spec="~1.0.5" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~2.2.1" />
+    <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
+    <engine name="android" spec="~6.1.2" />
+</widget>

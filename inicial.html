@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurante</title>
+
+  <link rel="shortcut icon" href="logopeq.png" type="imageb/x-icon" />
+
+  <!--<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>-->
+  <!-- Bootstrap 3.3.4 -->
+  <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <!-- Theme style -->
+  <link href="lib/dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+  <!-- Animate -->
+  <link href="lib/animate/animate.css" rel="stylesheet" type="text/css" />
+  <!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+  <link href="lib/dist/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
+
+  <!-- Import MaterializeCss -->
+  <link rel="stylesheet" type="text/css" href="lib/materialize/css/materialize.css"></link>
+  <!-- Import Fonts MaterializeCss -->
+  <link rel="stylesheet" type="text/css" href="lib/materialize/fonts/icon.css"></link>
+  <!-- Import alert -->
+  <link rel="stylesheet" type="text/css" href="lib/alert/alert.core.css"></link>
+  <link rel="stylesheet" type="text/css" href="lib/alert/alert.lite.css"></link>
+  <!-- Import datepicker Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="lib/datepicker/datepicker.css"></link>
+  <!-- Fonts Icons Google -->
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css"></link>
+  <!-- Estilo Data table -->
+  <!--<link rel="stylesheet" type="text/css" href="lib/datatable/css/jquery.dataTables.css"></link>-->
+
+  <style>
+    #container {
+      height: calc(100% - 57px) !important;
+    }
+    
+    #settings {
+      padding: 0px;
+    }
+    
+    body.expand .nav-settings {
+      top: 30%;
+      width: 100%;
+      height: 67.3%;
+    }
+    
+    body.expand .main-sidebar {
+      height: 55.1%;
+      border-bottom: 1px solid #222;
+    }
+    
+    .main-sidebar {
+      background-color: #6b6766 !important;
+    }
+    
+    body.expand #view {
+      height: 48% !important;
+      width: 58.2%;
+    }
+    
+    body.expand .sidebar-menu > .tabs {
+      width: 25% !important;
+      margin: 0px !important;
+      left: 75.1%;
+    }
+    
+    body.expand .sidebar-menu > .header {
+      height: 35px;
+    }
+    
+    .showbarraferramentas .main-sidebar {
+      height: 93.5% !important;
+    }
+    
+    .showbarraferramentas #settings #controle {
+      height: calc(100% - 316px) !important;
+    }
+    
+    .showbarraferramentas .popup {
+      height: 92.5% !important;
+    }
+    
+    nav {
+      background-color: #da251c !important;
+    }
+    
+    .skin-blue .sidebar-menu > li:hover > a,
+    .skin-blue .sidebar-menu > li.active > a {
+      background: rgb(97, 92, 91);
+      border-left-color: #da251c;
+    }
+    
+    .skin-blue .main-header .navbar .sidebar-toggle:hover {
+      background-color: #a01f19;
+    }
+    
+    .skin-blue .main-header li.user-header {
+      background-color: #da251c !important;
+    }
+  </style>
+
+</head>
+
+<body class="skin-blue sidebar-mini" ng-controller="inicial">
+  <div class="wrapper" ng-controller="bloco">
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="#" class="logo" style="background-color:white;">
+        <!-- mini logo -->
+        <span class="logo-mini"><img class="logo-pequeno" src="logopeq.png"></img></span>
+        <!-- logo normal -->
+        <span class="logo-lg"><img class="logo-grande" src="logogrande.png"></img></span>
+      </a>
+
+      <!-- Menu Topo -->
+      <nav class="navbar navbar-static-top" role="navigation">
+
+        <!-- Sidebar toggle button-->
+        <a id="menutelas" href="#" class="sidebar-toggle menu-ativo" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+
+            <!-- User Account -->
+            <li class="dropdown user user-menu">
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img class="user-image" alt="User Image" src={{user.foto}} />
+                <span class="hidden-xs">{{user.nome}}</span>
+              </a>
+
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img class="logo-user img-circle" alt="User Image" src={{user.foto}} />
+                  <p>
+                    {{user.nome}} {{user.email}}
+                  </p>
+                </li>
+
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="#modal-perfil" class="waves-effect waves-light btn btn-padding grey lighten-3 text-black"> Minha Conta</a>
+                  </div>
+                  <div class="pull-right">
+                    <a href="index.html" class="waves-effect waves-light btn btn-padding grey lighten-3 text-black">Sair 
+                      <i class="fa fa-sign-in text-black" style="top: 2px;left: 5px;"></i></a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Control Sidebar Toggle Button -->
+
+
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <aside class="main-sidebar">
+
+      <section class="sidebar" style="height: auto;">
+        <ul class="sidebar-menu">
+          <li data-app_menu="1" data-web_menu="1" class="treeview">
+            <a id="menu-telas" href="#" class="">
+              <i id="icone-telas" class="fa fa-desktop"> </i>
+              <span id="menu-telas"><font><font>caja</font></font></span>
+              <i class="fa fa-angle-right pull-right"></i>
+            </a>
+
+            <ul class="treeview-menu menu-open">
+              <li data-app_menu="1" data-web_menu="1" class="treeview" id="menu173">
+                <a id="menu-telas" href="#/caixa">
+                  <i id="icone-telas" class="fa fa-desktop"> </i>
+                  <span id="menu-telas"><font><font>caja</font></font></span>
+                </a>
+              </li>
+            </ul>
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#/historicocaixa">
+                  <i id="icone-telas" class="fa fa-desktop"> </i>
+                  <span id="menu-telas"><font><font>Historia de efectivo</font></font></span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li data-app_menu="1" data-web_menu="1">
+            <a id="menu-telas" href="#" class="">
+              <i id="icone-telas" class="fa fa-ticket"> </i>
+              <span id="menu-telas"><font><font>venta</font></font></span>
+              <i class="fa fa-angle-right pull-right"></i>
+            </a>
+            <ul class="treeview-menu menu-open">
+              <li data-app_menu="1" data-web_menu="1">
+                <a id="menu-telas" href="#/nocaixa">
+                  <i id="icone-telas" class="fa fa-ticket"> </i>
+                  <span id="menu-telas"><font><font>en efectivo</font></font></span>
+                </a>
+              </li>
+            </ul>
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1">
+                <a id="menu-telas" href="#/delivery">
+                  <i id="icone-telas" class="fa fa-ticket"> </i>
+                  <span id="menu-telas"><font><font>entrega</font></font></span>
+                </a>
+              </li>
+            </ul>
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-ticket"> </i>
+                  <span id="menu-telas"><font><font>Mesa / Comando</font></font></span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li data-app_menu="1" data-web_menu="1">
+            <a id="menu-telas" href="#">
+              <i id="icone-telas" class="fa fa-user"> </i>
+              <span id="menu-telas"><font><font>cliente</font></font></span>
+            </a>
+          </li>
+
+          <li data-app_menu="1" data-web_menu="1">
+            <a id="menu-telas" href="#">
+              <i id="icone-telas" class="fa fa-gears"> </i>
+              <span id="menu-telas"><font><font>ajustes</font></font></span>
+              <i class="fa fa-angle-right pull-right"></i>
+            </a>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="0" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-gears"> </i>
+                  <span id="menu-telas"><font><font>Departamentos, distritos y barrios</font></font></span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-gears"> </i>
+                  <span id="menu-telas"><font><font>numeración Personallizada</font></font></span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-gears"> </i>
+                  <span id="menu-telas"><font><font>empleados</font></font></span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-gears"> </i>
+                  <span id="menu-telas"><font><font>Configuración del sistema</font></font></span>
+                  <i class="fa fa-angle-right pull-right"></i>
+                </a>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-gears"> </i>
+                      <span id="menu-telas"><font><font>general</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-gears"> </i>
+                      <span id="menu-telas"><font><font>Mi configuración</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-gears"> </i>
+                      <span id="menu-telas"><font><font>ajustes de cupones</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-gears"> </i>
+                      <span id="menu-telas"><font><font>Categorías de productos</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-gears"> </i>
+                      <span id="menu-telas"><font><font>de origen del cliente</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-gears"> </i>
+                      <span id="menu-telas"><font><font>las tasas de parto</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-gears"> </i>
+                      <span id="menu-telas"><font><font>Locales / Cocinas</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li data-app_menu="1" data-web_menu="1" class="treeview">
+            <a id="menu-telas" href="#">
+              <i id="icone-telas" class="fa fa-cutlery"> </i>
+              <span id="menu-telas"><font><font>producto</font></font></span>
+              <i class="fa fa-angle-right pull-right"></i>
+            </a>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-cutlery"> </i>
+                  <span id="menu-telas"><font><font>Los productos comunes</font></font></span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-cutlery"> </i>
+                  <span id="menu-telas"><font><font>producto de pizza</font></font></span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview"> <a id="menu-telas" href="#"><i id="icone-telas" class="fa fa-cutlery"> </i><span id="menu-telas"><font><font>complemento</font></font></span> </a>                </li>
+            </ul>
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-cutlery"> </i>
+                  <span id="menu-telas"><font><font>observaciones</font></font></span> </a>
+              </li>
+            </ul>
+          </li>
+
+          <li data-app_menu="1" data-web_menu="1" class="treeview">
+            <a id="menu-telas" href="#">
+              <i id="icone-telas" class="fa fa-money"> </i>
+              <span id="menu-telas"><font><font>financiero</font></font></span>
+              <i class="fa fa-angle-right pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-money"> </i>
+                  <span id="menu-telas"><font><font>Cuentas a pagar</font></font></span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-money"> </i>
+                  <span id="menu-telas"><font><font>proveedor</font></font></span>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-money"> </i>
+                  <span id="menu-telas"><font><font>cuentas por Categorías</font></font></span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li data-app_menu="1" data-web_menu="1" class="treeview">
+            <a id="menu-telas" href="#">
+              <i id="icone-telas" class="fa fa-reorder"> </i>
+              <span id="menu-telas"><font><font>informe</font></font></span>
+              <i class="fa fa-angle-right pull-right"></i>
+            </a>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1" class="treeview">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-reorder"> </i>
+                  <span id="menu-telas"><font><font>venta</font></font></span>
+                  <i class="fa fa-angle-right pull-right"></i>
+                </a>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-reorder"> </i>
+                      <span id="menu-telas"><font><font>clasificación de productos</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1" class="treeview">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-reorder"> </i>
+                      <span id="menu-telas"><font><font>aplicaciones</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="treeview-menu">
+              <li data-app_menu="1" data-web_menu="1">
+                <a id="menu-telas" href="#">
+                  <i id="icone-telas" class="fa fa-reorder"> </i>
+                  <span id="menu-telas"><font><font>financiero</font></font></span>
+                  <i class="fa fa-angle-right pull-right"></i>
+                </a>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-reorder"> </i>
+                      <span id="menu-telas"><font><font>Resumen financiero</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="treeview-menu">
+                  <li data-app_menu="1" data-web_menu="1">
+                    <a id="menu-telas" href="#">
+                      <i id="icone-telas" class="fa fa-reorder"> </i>
+                      <span id="menu-telas"><font><font>ingresos</font></font></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li data-app_menu="1" data-web_menu="1" class="treeview">
+            <a id="menu-telas" href="#">
+              <i id="icone-telas" class="fa fa-cutlery"> </i>
+              <span id="menu-telas"><font><font>pantalla de cocina</font></font></span>
+            </a>
+          </li>
+
+          <li data-popup="pop-4" data-app_menu="1" class="treeview">
+            <a id="menu-telas" data-popup="pop-4" href="#">
+              <i id="icone-telas" data-popup="pop-4" class="fa fa-pencil-square-o"> </i>
+              <span id="menu-telas" data-popup="pop-4"><font><font>APP camarero</font></font></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </aside>
+
+    <div id="container" class="content-wrapper">
+
+      <section class="content row no-margin-b" ng-controller="funcoes">
+
+        <div id="view" ng-controller='tabela' class="col no-margin-tb no-padding no-borderelms view-notcustomize">
+
+          <div ng-view style="height: 100%;"></div>
+
+          <div id="container-menu" class="row">
+
+          </div>
+
+          <!-- Mensagem -->
+          <div id="myCustomDialog" style="display: none">
+            <div class="dialogWrapper">
+            </div>
+          </div>
+
+          <div id="RESUMOCAIXA" class="modal" data-classe="tela-modal">
+            <ng-include src="'modals/resumoCaixa.html'"> </ng-include>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </div>
+</body>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyD935zLMV4JPtt6WrnugX08lDX6kYqzc4c"></script>
+<script type="text/javascript" src="plugins/jquery.min.js"></script>
+
+<script type="text/javascript" src="lib/jQuery/jquery-2.1.1.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="lib/dist/js/app.js" type="text/javascript"></script>
+
+<!-- Scripts -->
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular/angular-animate.js"></script>
+
+<script type="text/javascript" src="controller/app.js"></script>
+<script type="text/javascript" src="lib/materialize/js/materialize.js"></script>
+<script type="text/javascript" src="lib/datatable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="lib/chart/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="lib/chart/Chart.min.js"></script>
+
+<script type="text/javascript" src="plugins/datatable/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="plugins/datatable/buttons.flash.min.js"></script>
+<script type="text/javascript" src="plugins/datatable/jszip.min.js"></script>
+<script type="text/javascript" src="plugins/datatable/pdfmake.min.js"></script>
+<script type="text/javascript" src="plugins/datatable/vfs_fonts.js"></script>
+<script type="text/javascript" src="plugins/datatable/buttons.html5.js"></script>
+<script type="text/javascript" src="plugins/datatable/buttons.print.js"></script>
+
+<script type="text/javascript" src="lib/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="lib/datepicker/bootstrap-datepicker.pt-BR.min.js"></script>
+
+<!-- VIEW -->
+<script type="text/javascript" src="view/caixa.js"></script>
+<script type="text/javascript" src="view/historicocaixa.js"></script>
+<script type="text/javascript" src="view/nocaixa.js"></script>
+<script type="text/javascript" src="view/delivery.js"></script>
+<script type="text/javascript" src="modals/resumocaixa.js"></script>
+
+<!-- COMPONENTS -->
+<script type="text/javascript" src="controller/inicial.js"></script>
+<script type="text/javascript" src="components/DYS_VIEW/view.js"></script>
+<script type="text/javascript" src="components/DYS_TABELA/controller.js"></script>
+<script type="text/javascript" src="components/DYS_BLOCO/controller.js"></script>
+<script type="text/javascript" src="components/DYS_PROP_LINHA/controller.js"></script>
+
+<script type="text/javascript" src="controller/CONFIG_TABLE/configtable.js"></script>
+<script type="text/javascript" src="controller/funcoes.js"></script>
+<script type="text/javascript" src="controller/perfil.js"></script>
+<script type="text/javascript" src="controller/routes.js"></script>
+<script type="text/javascript" src="controller/DYS_COMBO_DYS/comboTela.js"></script>
+<script type="text/javascript" src="controller/DYS_COMBO_DYS/comboTabela.js"></script>
+<script type="text/javascript" src="controller/DYS_COMBO_DYS/controller.js"></script>
+
+<script type="text/javascript" src="components/DYS_VIEW_CUSTOMIZADOR/controllercustomizador.js"></script>
+<script type="text/javascript" src="components/DYS_VIEW_CUSTOMIZADOR/template.js"></script>
+<script type="text/javascript" src="components/Index/controllerCustomizador.js"></script>
+<script type="text/javascript" src="lib/barcode/barcode.js"></script>
+<script type="text/javascript" src="lib/alert/alert.js"></script>
+
+</html>

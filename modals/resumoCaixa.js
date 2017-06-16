@@ -1,0 +1,7 @@
+g$["540_load"] = function() {
+    g$.carregaQuery("carregaQuery | SELECT cl.razao_a, DATE_FORMAT(c.data_abertura, '%d/%m/%Y %h:%i'), c.observacoes, SUM(IF (p.origem_pagamento_id=0, COALESCE(p.entrada,0),0)), SUM(IF(p.origem_pagamento_id<>0 AND forma_de_pagamento_id =1, COALESCE(p.entrada,0),0)), SUM(IF(p.origem_pagamento_id<>0 AND forma_de_pagamento_id =4, COALESCE(p.entrada,0),0)), SUM(IF(p.origem_pagamento_id<>0 AND forma_de_pagamento_id =3, COALESCE(p.entrada,0),0)), SUM(IF(p.origem_pagamento_id<>0 AND forma_de_pagamento_id =2, COALESCE(p.entrada,0),0)), SUM(IF(p.origem_pagamento_id<>0 AND forma_de_pagamento_id =5, COALESCE(p.entrada,0),0)), SUM(IF(p.origem_pagamento_id<>0, COALESCE(p.entrada,0),0)), SUM(COALESCE(p.saida,0)), SUM(IF(forma_de_pagamento_id =1, COALESCE(p.entrada,0),0))-SUM(COALESCE(p.saida,0)), SUM(COALESCE(p.entrada,0))-SUM(COALESCE(p.saida,0)) FROM  »user.banco».pagamento p LEFT JOIN »user.banco».caixa c ON c.id = p.caixa_id LEFT JOIN »user.banco».cliente_fornecedor cl ON cl.node_usuario_id = c.cliente_fornecedor_id WHERE p.caixa_id = »memo1» | 14682 ¦ 14684 ¦14686 ¦14688 ¦14694 ¦14696 ¦14698 ¦ 14700 ¦14702 ¦ 14704 ¦ 14711 ¦ 14709 ¦ 14710", false);
+}
+
+app.controller("resumocaixa", function($scope, $http, $rootScope) {
+    $("#view [data-id=14724]")[0].addEventListener("click", g$.imprime.bind(null, "imprime | 14664", false), false);
+});
